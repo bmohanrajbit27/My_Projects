@@ -15,7 +15,13 @@ def return_value(number):
         print(value)
         return value
 
-number = int(input('Type an integer for producing collatz sequence: '))
+value_check = True
+while value_check:
+    try:
+        number = int(input('Type an integer for producing collatz sequence: '))
+        value_check = False
+    except ValueError:
+        print('Please enter valid number..')
 
 while True:
     returned_value = return_value(number)
