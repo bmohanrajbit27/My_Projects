@@ -1,7 +1,22 @@
 '''
     Below script produce Collatz sequence for a given number. 
     Whatever the positive number you give as input, the script will keep on printing numbers untill it reaches value 1.
-    
+    Sample Output:
+    Type an integer for producing collatz sequence: 34
+    17
+    52
+    26
+    13
+    40
+    20
+    10
+    5
+    16
+    8
+    4
+    2
+    1
+    Thats the collatz sequence for the given number.
     HAVE FUN
 '''
 
