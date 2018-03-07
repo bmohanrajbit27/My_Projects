@@ -54,18 +54,20 @@ def getAllPlayersFromTeam(team_link):
 
 def playerBelongsToState(player_url, state=STATE):
 	global state_players
-	response = urllib2.urlopen(player_url)
-	str_content = response.read().decode('utf-8')
-    
-	matchs= re.search('<div class="level">([\w\s()]+)</div>',str_content)
-	if matchs:
-		if matchs.group(1) == state:
-			skill_index = re.search('<span class=\"skill_value show_tooltip\" title=\"This is a metric used to measure the overall skill set of your players that gives a general idea of the player\'s worth\">[\s]+([\w\d,]+)[\s]+',str_content)
-			if skill_index:
-				skill = int(skill_index.group(1).replace(',',''))
-				state_players[skill] = player_url
-				#print player_url
-				return True
+	try:
+		response = urllib2.urlopen(player_url)
+		str_content = response.read().decode('utf-8')
+		matchs= re.search('<div class="level">([\w\s()]+)</div>',str_content)
+		if matchs:
+			if matchs.group(1) == state:
+				skill_index = re.search('<span class=\"skill_value show_tooltip\" title=\"This is a metric used to measure the overall skill set of your players that gives a general idea of the player\'s worth\">[\s]+([\w\d,]+)[\s]+',str_content)
+				if skill_index:
+					skill = int(skill_index.group(1).replace(',',''))
+					state_players[skill] = player_url
+					#print player_url
+					return True
+	except urllib2.HTTPError:
+		print 'There was an error with the request'
 	return False
  
 def main():
