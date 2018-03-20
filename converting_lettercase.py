@@ -9,5 +9,5 @@ def myfunc(word):
             neword += value.upper()
     return neword
     
-result = myfunc(sys.arg[1])
+result = myfunc(sys.argv[1])
 print(f'The word changed from {sys.argv[1]} to {result}')
