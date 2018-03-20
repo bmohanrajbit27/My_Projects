@@ -9,7 +9,10 @@ while True:
     
     guess = int(input('Please guess a number: '))
     
-    if guess == comp_value:
+     if guess < 1 or guess > 100:
+        print('Sorry out of bounds, guess from 1 to 100')
+        continue
+    elif guess == comp_value:
         guess_list.append(guess-comp_value)
         break
     elif abs(guess-comp_value) < 10 and iffirst_guess == True:
